@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ car.title }}{% endblock %}
+
+{% block body %}
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ path('home') }}">Объявления</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ car.title }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <h1>
+                {{ car.title }}
+            </h1>
+            <p>
+                <strong>Марка</strong> {{ car.brand.title }}.
+                <strong>Страна</strong> {{ car.country.title }}.
+                <strong>Год</strong> {{ car.year }}.
+                <strong>Цена</strong> {{ car.price }}.
+            </p>
+            <p>{{ car.content }}</p>
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <a class="btn btn-danger float-right" href="{{ path('delete', { 'id' : car.id }) }}">Удалить</a>
+            <a class="btn btn-primary float-right mr-3" href="{{ path('update', { 'id' : car.id }) }}">Редактировать</a>
+        </div>
+    </div>
+
+{% endblock %}
